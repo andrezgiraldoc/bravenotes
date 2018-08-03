@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar text-center>
+    <ion-title>Cuenta de Usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="no-scroll" padding>
+  <!-- <ion-grid style="height: 100%">
+    <ion-row justify-content-center align-items-center> -->
+          <form [formGroup]="profileForm" (ngSubmit)="sendData()">
+            <ion-item>
+              <ion-label stacked>Nombre artístico</ion-label>
+              <ion-input type="text" formControlName="artisticName"></ion-input>
+            </ion-item>
+            <div *ngIf="profileForm.controls['artisticName'].hasError('maxlength') && !profileForm.controls['artisticName'].hasError('required')"  class="alert alert-danger">
+              <span>Nombre demasiado extenso</span>
+            </div>   
+            <ion-item>
+                <ion-label stacked>Fecha de nacimiento</ion-label>
+                <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthDay"></ion-datetime>
+              </ion-item>
+            <ion-item>
+              <ion-label stacked>Género musical favorito</ion-label>
+              <ion-select formControlName="musicalGenre" multiple="false">
+                <ion-option *ngFor="let genre of genres">
+                  {{ genre }}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+            <br>
+            <button ion-button type="submit" [disabled]="!profileForm.valid" round>Siguiente</button>
+          </form>
+    <!-- </ion-row>
+  </ion-grid> -->
+</ion-content>
+
+
+
