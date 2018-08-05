@@ -11,13 +11,9 @@
   <!-- <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center> -->
           <form [formGroup]="profileForm" (ngSubmit)="sendData()">
-            <ion-item>
-              <ion-label stacked>Nombre artístico</ion-label>
+            <super-input label="Nombre artístico" [control]="profileForm.controls['artisticName']" [inputErrors]="profileForm.controls['artisticName'].errors">
               <ion-input type="text" formControlName="artisticName"></ion-input>
-            </ion-item>
-            <div *ngIf="profileForm.controls['artisticName'].hasError('maxlength') && !profileForm.controls['artisticName'].hasError('required')"  class="alert alert-danger">
-              <span>Nombre demasiado extenso</span>
-            </div>   
+            </super-input>
             <ion-item>
                 <ion-label stacked>Fecha de nacimiento</ion-label>
                 <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthDay"></ion-datetime>

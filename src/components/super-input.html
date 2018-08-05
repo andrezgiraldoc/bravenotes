@@ -1,0 +1,5 @@
+<ion-item>
+    <ion-label stacked>{{label}}</ion-label>
+    <ng-content item-content></ng-content>
+</ion-item>
+<span *ngIf="errors && control.dirty">{{errorMessage}}</span>

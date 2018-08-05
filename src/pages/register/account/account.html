@@ -11,13 +11,12 @@
   <!-- <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center> -->
           <form #accountForm="ngForm" (ngSubmit)="sendData()">
-            <ion-item>
-              <ion-label stacked>Nombre</ion-label>
+            <super-input label="Nombre" [control]="userName" [inputErrors]="userName.errors">
               <ion-input type="text" [(ngModel)]="name" name="name" #userName="ngModel" required></ion-input>
-            </ion-item>
-            <div *ngIf="!userName.valid && userName.touched" class="errorMsg">
-                El nombre de usuario es requerido
-            </div>
+            </super-input>
+            <!-- <div *ngIf="!userName.valid && userName.touched" class="errorMsg">
+                Name is required
+            </div> -->
             <ion-item>
               <ion-label stacked>Apellidos</ion-label>
               <ion-input type="text" [(ngModel)]="lastName" name="lastname" required></ion-input>
@@ -26,10 +25,9 @@
               <ion-label stacked>Teléfono</ion-label>
               <ion-input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" maxlength="13" required></ion-input>
             </ion-item>
-            <ion-item>
-              <ion-label stacked>Email</ion-label>
-              <ion-input type="text" [(ngModel)]="email" name="email" email></ion-input>
-            </ion-item>
+            <super-input label="Email" [control]="userEmail" [inputErrors]="userEmail.errors">
+              <ion-input type="text" [(ngModel)]="email" name="email" #userEmail="ngModel" email required></ion-input>
+            </super-input>
             <ion-item>
               <ion-label stacked>Contraseña</ion-label>
               <ion-input type="text" [(ngModel)]="password" name="password" #userPassword="ngModel" minlength="5" required></ion-input>
